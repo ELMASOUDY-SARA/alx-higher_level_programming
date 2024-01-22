@@ -10,6 +10,4 @@ def safe_function(fct, *args):
         return fct(*args)
     except Exception as num:
         stderr.write("Exception: {}\n".format(num))
-    
-
-
+        return None
