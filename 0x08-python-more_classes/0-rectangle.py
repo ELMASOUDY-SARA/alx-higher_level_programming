@@ -6,5 +6,5 @@ Defines an empty class called Rectangle
 
 
 class Rectangle:
-        """Empty class."""
-            pass
+        def __init__(self):
+                    pass
