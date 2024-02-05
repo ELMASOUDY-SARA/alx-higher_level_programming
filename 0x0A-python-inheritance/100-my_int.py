@@ -1,19 +1,19 @@
 #!/usr/bin/python3
-"""
-Contains the class MyInt
+"""Write a class MyInt that inherits from int:
+
+    *MyInt is a rebel. MyInt has == and != operators inverted
+    *You are not allowed to import any module
+
+
 """
 
 
 class MyInt(int):
-        """rebel version of an integer, perfect for opposite day!"""
-            def __new__(cls, *args, **kwargs):
-                        """create a new instance of the class"""
-                                return super(MyInt, cls).__new__(cls, *args, **kwargs)
+    """This class invert the operators"""
+    def __eq__(self, other):
+        """Overwrite to false """
+        return False
 
-                                def __eq__(self, other):
-                                            """what was != is now =="""
-                                                    return int(self) != other
-
-                                                    def __ne__(self, other):
-                                                                """what was == is now !="""
-                                                                        return int(self) == other
+    def __ne__(self, other):
+        """OverWrite to true """
+        return True
