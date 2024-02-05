@@ -1,36 +1,23 @@
 #!/usr/bin/python3
 """
-Contains the class BaseGeometry and subclass Rectangle
+Class Called BaseGeometry
 """
+BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
 
-class BaseGeometry:
-        """A class with public instance methods area and integer_validator"""
-            def area(self):
-                        """raises an exception when called"""
-                                raise Exception("area() is not implemented")
+class Rectangle(BaseGeometry):
+    """This Class called Rectangle inherits from BaseGeometry"""
+    def __init__(self, width, height):
+        """This is the Instantiation"""
+        self.integer_validator("width", width)
+        self.integer_validator("height", height)
+        self.__width = width
+        self.__height = height
 
-                                def integer_validator(self, name, value):
-                                            """validates that value is an integer greater than 0"""
-                                                    if type(value) is not int:
-                                                                    raise TypeError("{:s} must be an integer".format(name))
-                                                                        if value <= 0:
-                                                                                        raise ValueError("{:s} must be greater than 0".format(name))
+    def area(self):
+        """This function is the area of the rectangle"""
+        return self.__width * self.__height
 
-
-                                                                                    class Rectangle(BaseGeometry):
-                                                                                            """A representation of a rectangle"""
-                                                                                                def __init__(self, width, height):
-                                                                                                            """instantiation of the rectangle"""
-                                                                                                                    self.integer_validator("width", width)
-                                                                                                                            self.__width = width
-                                                                                                                                    self.integer_validator("height", height)
-                                                                                                                                            self.__height = height
-
-                                                                                                                                                def area(self):
-                                                                                                                                                            """returns the area of the rectangle"""
-                                                                                                                                                                    return self.__width * self.__height
-
-                                                                                                                                                                    def __str__(self):
-                                                                                                                                                                                """informal string representation of the rectangle"""
-                                                                                                                                                                                        return "[Rectangle] {:d}/{:d}".format(self.__width, self.__height)
+    def __str__(self):
+        """ This function return to a descripcion about this class"""
+        return ("[Rectangle] {}/{}".format(self.__width, self.__height))
