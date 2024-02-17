@@ -1,66 +1,80 @@
 #!/usr/bin/python3
-"""1-rectangle module"""
+"""Module 3-rectangle
+Defines a Rectangle class.
+"""
 
 
 class Rectangle:
-        """module body"""
+    """Rectangle class defined by width and height."""
 
-            def __init__(self, width=0, height=0):
-                        self.width = width
-                                self.height = height
+    def __init__(self, width=0, height=0):
+        """Initializes a Rectangle instance.
+        Args:
+            width: width of the rectangle
+            height: height of the rectangle
+        """
+        self.width = width
+        self.height = height
 
-                                    @property
-                                        def width(self):
-                                                    """retrieves the width"""
-                                                            return self.__width
+    def __str__(self):
+        """Returns an informal and nicely printable string representation
+        of a Rectangle instance, filled with the '#' character."""
+        if self.__height == 0 or self.__width == 0:
+            return ''
+        rec_str = ''
+        for i in range(self.__height):
+            for j in range(self.__width):
+                rec_str += '#'
+            rec_str += '\n'
+        return rec_str[:-1]
 
-                                                            @width.setter
-                                                                def width(self, value):
-                                                                            """set the width: must be integer
-                                                                                        Args:
-                                                                                                        value: the width
-                                                                                                                """
-                                                                                                                        if isinstance(value, int) is False:
-                                                                                                                                        raise TypeError("width must be an integer")
-                                                                                                                                            if value < 0:
-                                                                                                                                                            raise ValueError("width must be >= 0")
-                                                                                                                                                                self.__width = value
+    @property
+    def width(self):
+        """Retrieves the width of a Rectangle instance."""
+        return self.__width
 
-                                                                                                                                                                    @property
-                                                                                                                                                                        def height(self):
-                                                                                                                                                                                    """retrieves the height"""
-                                                                                                                                                                                            return self.__height
+    @width.setter
+    def width(self, value):
+        """Sets the width of a Rectangle instance
+        Args:
+            value: value of the width, must be a positive integer
+        """
+        if not isinstance(value, int):
+            raise TypeError("width must be an integer")
+        if value < 0:
+            raise ValueError("width must be >= 0")
+        self.__width = value
 
-                                                                                                                                                                                            @height.setter
-                                                                                                                                                                                                def height(self, value):
-                                                                                                                                                                                                            """set the height: must be integer
-                                                                                                                                                                                                                        Args:
-                                                                                                                                                                                                                                        value: the height
-                                                                                                                                                                                                                                                """
-                                                                                                                                                                                                                                                        if isinstance(value, int) is False:
-                                                                                                                                                                                                                                                                        raise TypeError("height must be an integer")
-                                                                                                                                                                                                                                                                            if value < 0:
-                                                                                                                                                                                                                                                                                            raise ValueError("height must be >= 0")
-                                                                                                                                                                                                                                                                                                self.__height = value
+    @property
+    def height(self):
+        """Retrieves the height of a Rectangle instance."""
+        return self.__height
 
-                                                                                                                                                                                                                                                                                                    def area(self):
-                                                                                                                                                                                                                                                                                                                """ returns the rectangle area"""
-                                                                                                                                                                                                                                                                                                                        return self.__height * self.__width
+    @height.setter
+    def height(self, value):
+        """Sets the height of a Rectangle instance
+        Args:
+            value: value of the height, must be a positive integer
+        """
+        if not isinstance(value, int):
+            raise TypeError("height must be an integer")
+        if value < 0:
+            raise ValueError("height must be >= 0")
+        self.__height = value
 
-                                                                                                                                                                                                                                                                                                                        def perimeter(self):
-                                                                                                                                                                                                                                                                                                                                    """returns the rectangle perimeter"""
-                                                                                                                                                                                                                                                                                                                                            if self.__width == 0 or self.__height == 0:
-                                                                                                                                                                                                                                                                                                                                                            return 0
-                                                                                                                                                                                                                                                                                                                                                                else:
-                                                                                                                                                                                                                                                                                                                                                                                return 2 * (self.__height + self.__width)
+    def area(self):
+        """Calculates the area of a Rectangle instance
+        Returns:
+            Area of the the rectangle, given by height * width
+        """
+        return self.__width * self.__height
 
-                                                                                                                                                                                                                                                                                                                                                                                def __str__(self):
-                                                                                                                                                                                                                                                                                                                                                                                            """prints the rectangle with the character #"""
-                                                                                                                                                                                                                                                                                                                                                                                                    if self.__width == 0 or self.__height == 0:
-                                                                                                                                                                                                                                                                                                                                                                                                                    return ""
-                                                                                                                                                                                                                                                                                                                                                                                                                        record_str = ""
-                                                                                                                                                                                                                                                                                                                                                                                                                                i = 0
-                                                                                                                                                                                                                                                                                                                                                                                                                                        while (i < self.__height):
-                                                                                                                                                                                                                                                                                                                                                                                                                                                        record_str += ("#" * self.__width) + "\n"
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                    i += 1
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                            return record_str[:-1]
+    def perimeter(self):
+        """Calculates the perimeter of a Rectangle instance
+        Returns:
+            Perimeter of the rectangle, given by 2 * (height + width)
+        """
+        if self.__height == 0 or self.__width == 0:
+            return 0
+        return 2 * (self.__width + self.__height)
+
